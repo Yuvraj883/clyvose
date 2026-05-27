@@ -1,6 +1,6 @@
 // components/SocialProof.tsx
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 const testimonials = [
   {
@@ -44,6 +44,32 @@ export default function SocialProof() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const touchStartX = useRef<number | null>(null);
+
+  const handleNext = useCallback(() => {
+    setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  }, []);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+  };
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -64,12 +90,12 @@ export default function SocialProof() {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
     const interval = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+      handleNext();
       setStarAnim(false);
       setTimeout(() => setStarAnim(true), 100);
     }, 5000);
     return () => clearInterval(interval);
-  }, [isInView]);
+  }, [isInView, handleNext]);
 
   // Animate carousel slide
   useEffect(() => {
@@ -134,7 +160,12 @@ export default function SocialProof() {
         {/* Testimonial carousel */}
         <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} mb-10`}>
           <div className="flex justify-center items-center w-full">
-            <div ref={carouselRef} className="w-full max-w-3xl relative">
+            <div
+              ref={carouselRef}
+              className="w-full max-w-3xl relative cursor-grab active:cursor-grabbing"
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
               {testimonials.map((testimonial, index) => (
                 <div
                   key={testimonial.name}

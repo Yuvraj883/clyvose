@@ -238,7 +238,7 @@ export default function ProjectsDelivered() {
         {/* ── Sliding track ── */}
         <div
           ref={containerRef}
-          className="overflow-hidden p-5 -m-5"
+          className="overflow-visible"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Feature = () => {
     return (
-      <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-indigo-100">
+      <section id="features" className="py-16 bg-gradient-to-br from-blue-50 via-white to-indigo-100">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-10 text-center">
             What We <span className="text-blue-600">Offer</span>

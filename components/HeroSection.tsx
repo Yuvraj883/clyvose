@@ -120,7 +120,7 @@ export default function Hero() {
                   <circle cx="12" cy="12" r="10" />
                   <polygon points="10 8 16 12 10 16 10 8" />
                 </svg>
-                <span className="relative z-10">View Our Work</span>
+                <span className="relative z-10">Explore Services</span>
                 <span className="absolute left-0 top-0 w-full h-full bg-blue-100 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
               </a>
             </div>

@@ -7,6 +7,7 @@ import Pricing from "../../components/Pricing";
 import FAQ from "../../components/FAQ";
 import FinalCTA from "../../components/FinalCTA";
 import Feature from "../../components/Features";
+import ProjectsDelivered from "../../components/ProjectsDelivered";
 
 export default function Home() {
   return (
@@ -14,11 +15,12 @@ export default function Home() {
       <Hero />
       <SolutionSection />
       <Feature />
+      <ProjectsDelivered />
       <SocialProof />
       <HowItWorks />
       <Pricing />
       <FAQ />
-      <FinalCTA/>
+      <FinalCTA />
     </div>
   );
 }

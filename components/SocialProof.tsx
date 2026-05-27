@@ -46,6 +46,8 @@ export default function SocialProof() {
   useEffect(() => {
     setIsVisible(true);
     setStarAnim(true);
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
     const interval = setInterval(() => {
       setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
       setStarAnim(false);
@@ -57,6 +59,8 @@ export default function SocialProof() {
   // Animate carousel slide
   useEffect(() => {
     if (!carouselRef.current) return;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
     carouselRef.current.animate([
       { opacity: 0, transform: 'translateY(30px)' },
       { opacity: 1, transform: 'translateY(0)' }
@@ -142,6 +146,21 @@ export default function SocialProof() {
         .cta-animated:hover {
           transform: scale(1.04) translateY(-2px);
           box-shadow: 0 8px 32px 0 #a78bfa33;
+        }
+        @media (prefers-reduced-motion: reduce), (max-width: 768px) {
+          .animate-float-slow,
+          .animate-float-slower,
+          .animate-float-fast,
+          .star-pop,
+          .animate-avatar-float,
+          .headline-animated {
+            animation: none !important;
+          }
+          .headline-animated {
+            background: none;
+            -webkit-text-fill-color: initial;
+            color: #1f2937;
+          }
         }
       `}</style>
 
@@ -319,10 +338,10 @@ export default function SocialProof() {
         {/* Call to action */}
         <div className={`text-center mt-8 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}> 
           <a 
-            href="/case-studies" 
+            href="mailto:clyvos@zohomail.in?subject=Discovery%20Call%20Request" 
             className="cta-animated inline-flex items-center text-lg text-blue-600 font-bold hover:text-pink-600 transition-colors group px-6 py-3 rounded-full bg-white/70 shadow-md backdrop-blur-md border border-blue-100 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            View our case studies
+            Book a free discovery call
             <svg 
               className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" 
               viewBox="0 0 24 24" 

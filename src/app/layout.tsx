@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -13,8 +13,48 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Clyvos",
-  description: "Clyvos: Next-gen platform for your needs.",
+  metadataBase: new URL("https://clyvose.vercel.app"),
+  title: {
+    default: "Clyvos | Digital Product Development",
+    template: "%s | Clyvos",
+  },
+  description:
+    "Clyvos helps startups and businesses launch fast, scalable web and mobile products with modern design and reliable engineering.",
+  applicationName: "Clyvos",
+  keywords: [
+    "Clyvos",
+    "MVP development",
+    "web app development",
+    "mobile app development",
+    "startup product development",
+  ],
+  openGraph: {
+    title: "Clyvos | Digital Product Development",
+    description:
+      "Build and launch high-quality digital products with Clyvos. Fast MVPs, scalable architecture, and transparent delivery.",
+    url: "https://clyvose.vercel.app",
+    siteName: "Clyvos",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Clyvos | Digital Product Development",
+    description:
+      "Fast MVPs, modern web and mobile apps, and reliable product delivery for growing teams.",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -24,18 +64,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Clyvos: Next-gen platform for your needs." />
-        <meta name="theme-color" content="#ffffff" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="icon" href="/favicon.ico" />
-        <title>Clyvos</title>
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

@@ -75,7 +75,7 @@ export default function Hero() {
             {/* Small badge */}
             <div className={`mb-6 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}>
               <span className="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full shadow animate-pulse">
-                Trusted by 500+ businesses
+                Trusted by 5+ businesses so far
               </span>
             </div>
             {/* Main heading */}
@@ -90,7 +90,7 @@ export default function Hero() {
             </h1>
             {/* Description */}
             <p className={`text-gray-700 mb-8 max-w-lg text-lg transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-              Clyvose is your trusted partner for building high-quality digital
+              Clyvos is your trusted partner for building high-quality digital
               solutions. We help businesses accelerate growth and stand out in
               the digital era.
             </p>
@@ -169,6 +169,20 @@ export default function Hero() {
                 </svg>
               </a>
             </div>
+            <div className="mt-6 grid grid-cols-3 gap-3 max-w-lg">
+              <div className="rounded-xl bg-white/70 border border-blue-100 px-3 py-2 text-center shadow-sm">
+                <p className="text-xl font-extrabold text-blue-700">5+</p>
+                <p className="text-xs text-gray-600">Businesses served so far</p>
+              </div>
+              <div className="rounded-xl bg-white/70 border border-blue-100 px-3 py-2 text-center shadow-sm">
+                <p className="text-xl font-extrabold text-blue-700">4.9/5</p>
+                <p className="text-xs text-gray-600">Client rating</p>
+              </div>
+              <div className="rounded-xl bg-white/70 border border-blue-100 px-3 py-2 text-center shadow-sm">
+                <p className="text-xl font-extrabold text-blue-700">40%</p>
+                <p className="text-xs text-gray-600">Faster delivery</p>
+              </div>
+            </div>
           </div>
           {/* Right side image/illustration */}
           <div
@@ -189,11 +203,11 @@ export default function Hero() {
                       width={100}
                       height={100}
                       src="/logo.png"
-                      alt="Clyvose Logo"
+                      alt="Clyvos Logo"
                       className="w-28 h-28 object-contain rounded-full shadow-lg"
                     />
                   </div>
-                  <h3 className="font-medium text-lg text-gray-900">Clyvose</h3>
+                  <h3 className="font-medium text-lg text-gray-900">Clyvos</h3>
                   <p className="text-sm text-gray-500">
                     Digital solutions simplified
                   </p>
@@ -265,6 +279,21 @@ export default function Hero() {
         .animate-gradient-move {
           background-size: 200% 200%;
           animation: gradient-move 10s ease-in-out infinite;
+        }
+        @media (prefers-reduced-motion: reduce), (max-width: 768px) {
+          .animate-float,
+          .animate-float-slow2,
+          .animate-float-slow3,
+          .animate-float-reverse,
+          .animate-scale-in,
+          .animate-logo-bounce,
+          .animate-logo-spin-bounce,
+          .animate-cta-glow,
+          .animate-bg-move,
+          .animate-gradient-move,
+          .animate-blink {
+            animation: none !important;
+          }
         }
       `}</style>
     </section>

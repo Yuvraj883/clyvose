@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 const testimonials = [
   {
-    name: 'Gunika Gautam',
+    name: 'GG Gautam',
     title: 'Founder, Tamana India',
     quote: 'Clyvos understood our vision perfectly. Their technical expertise and seamless delivery process made a huge difference in building our platform.',
   },

@@ -68,6 +68,7 @@ export default function HowItWorks() {
 
   return (
     <motion.section
+      id="how-it-works"
       className="py-24 bg-[#030712] relative overflow-hidden"
       initial="hidden"
       whileInView="visible"

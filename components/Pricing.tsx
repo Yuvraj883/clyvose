@@ -42,7 +42,7 @@ export default function Pricing() {
   ];
 
   return (
-    <section className="py-24 bg-[#030712] relative overflow-hidden">
+    <section id="pricing" className="py-24 bg-[#030712] relative overflow-hidden">
       {/* Premium ambient glows */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="w-80 h-80 rounded-full blur-[140px] absolute -top-20 -left-20 glow-spot-blue opacity-30 animate-pulse-slow" />

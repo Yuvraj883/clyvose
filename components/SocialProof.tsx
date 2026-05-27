@@ -4,13 +4,13 @@ import { useState, useEffect, useRef } from "react";
 
 const testimonials = [
   {
-    name: 'Aman Goyal',
+    name: 'Gunika Gautam',
     title: 'Founder, Tamana India',
     quote: 'Clyvos understood our vision perfectly. Their technical expertise and seamless delivery process made a huge difference in building our platform.',
   },
   {
     name: 'Professor HS Rawat',
-    title: 'PC MSIT',
+    title: 'Director of Placement Cell, Maharaja Surajmal Institute of Technology',
     quote: 'The team at Clyvos demonstrated exceptional professionalism and skill. The quality of work they delivered exceeded our expectations and greatly benefited our institution.',
   },
   {
@@ -85,58 +85,7 @@ export default function SocialProof() {
       <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full blur-[120px] glow-spot-blue opacity-30 animate-float-slow pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-[120px] glow-spot-purple opacity-25 animate-float-slower pointer-events-none" />
 
-      <style>{`
-        @keyframes float-slow { 0% { transform: translateY(0) } 50% { transform: translateY(-16px) } 100% { transform: translateY(0) } }
-        @keyframes float-slower { 0% { transform: translateY(0) } 50% { transform: translateY(24px) } 100% { transform: translateY(0) } }
-        .animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
-        .animate-float-slower { animation: float-slower 12s ease-in-out infinite; }
-        .star-pop { animation: star-pop 0.6s cubic-bezier(0.16,1,0.3,1) both; }
-        @keyframes star-pop { 0% { transform: scale(0.8) rotate(-10deg); opacity: 0.5; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
-        .animate-avatar-float { animation: avatar-float 3.5s ease-in-out infinite; }
-        @keyframes avatar-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-        .avatar-gradient {
-          background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
-          padding: 2px;
-          border-radius: 9999px;
-          display: inline-block;
-        }
-        .avatar-inner {
-          background: #090d16;
-          border-radius: 9999px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .headline-animated {
-          background: linear-gradient(270deg, #60a5fa, #a78bfa, #f472b6, #60a5fa);
-          background-size: 600% 600%;
-          animation: gradient-move 6s ease-in-out infinite;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          color: transparent;
-        }
-        @keyframes gradient-move {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .testimonial-hover {
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .testimonial-hover:hover {
-          transform: translateY(-5px);
-          border-color: rgba(139, 92, 246, 0.35);
-          background: rgba(15, 23, 42, 0.55);
-          box-shadow: 0 16px 40px -10px rgba(99, 102, 241, 0.15);
-        }
-        .dot {
-          transition: transform 0.2s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
-        }
-        .dot:hover {
-          transform: scale(1.2);
-        }
-      `}</style>
+
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -173,10 +122,10 @@ export default function SocialProof() {
             <div ref={carouselRef} className="w-full max-w-3xl relative">
               {testimonials.map((testimonial, index) => (
                 <div
-                  key={index}
+                  key={testimonial.name}
                   className={`w-full transition-all duration-700 ${index === activeTestimonial
-                      ? 'opacity-100 scale-100 z-10'
-                      : 'opacity-0 scale-95 z-0 absolute top-0 left-0'
+                    ? 'opacity-100 scale-100 z-10'
+                    : 'opacity-0 scale-95 z-0 absolute top-0 left-0'
                     }`}
                   aria-hidden={index !== activeTestimonial}
                 >
@@ -215,13 +164,13 @@ export default function SocialProof() {
 
           {/* Indicator dots */}
           <div className="flex justify-center h-8 gap-2.5 mt-6" aria-label="Testimonial navigation" aria-live="polite">
-            {testimonials.map((_, index) => (
+            {testimonials.map((testimonial, index) => (
               <button
-                key={index}
+                key={testimonial.name}
                 onClick={() => setActiveTestimonial(index)}
                 className={`dot w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${index === activeTestimonial
-                    ? 'bg-blue-400 scale-125 shadow-[0_0_10px_rgba(96,165,250,0.5)]'
-                    : 'bg-slate-700 hover:bg-slate-600'
+                  ? 'bg-blue-400 scale-125 shadow-[0_0_10px_rgba(96,165,250,0.5)]'
+                  : 'bg-slate-700 hover:bg-slate-600'
                   }`}
                 aria-label={`View testimonial ${index + 1}`}
                 aria-pressed={index === activeTestimonial}
@@ -265,8 +214,8 @@ export default function SocialProof() {
             <div className="flex justify-center items-center w-full">
               <div className="w-full max-w-4xl relative">
                 <div className="grid sm:grid-cols-2 gap-6 px-2">
-                  {testimonials.map((testimonial, index) => (
-                    <div key={index} className="opacity-100 scale-100 z-10 testimonial-hover rounded-2xl">
+                  {testimonials.map((testimonial) => (
+                    <div key={testimonial.name} className="opacity-100 scale-100 z-10 testimonial-hover rounded-2xl">
                       <div className="relative bg-slate-900/35 border border-white/[0.05] backdrop-blur-lg rounded-2xl p-6 flex flex-col justify-center items-center min-h-[180px] overflow-hidden">
                         {/* Decorative quote icon */}
                         <div className="absolute -top-3 left-4 text-blue-500/10 opacity-30 z-0 pointer-events-none">
@@ -306,7 +255,7 @@ export default function SocialProof() {
         <div className={`text-center mt-12 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
           <a
             href="mailto:clyvos@zohomail.in?subject=Discovery%20Call%20Request"
-            className="inline-flex items-center gap-2 text-sm sm:text-base text-blue-400 font-bold hover:text-pink-400 px-6 py-3 rounded-full bg-slate-900/35 border border-white/[0.06] hover:border-indigo-500/20 shadow-md backdrop-blur-md hover:shadow-2xl transition-all duration-300"
+            className="group inline-flex items-center gap-2 text-sm sm:text-base text-blue-400 font-bold hover:text-pink-400 px-6 py-3 rounded-full bg-slate-900/35 border border-white/[0.06] hover:border-indigo-500/20 shadow-md backdrop-blur-md hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
           >
             Book a free discovery call
             <svg

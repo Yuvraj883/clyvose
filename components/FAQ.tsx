@@ -58,7 +58,7 @@ export default function FAQ() {
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
             <div
-              key={idx}
+              key={faq.question}
               className={`group border rounded-3xl overflow-hidden transition-all duration-500 ${
                 openIndex === idx
                   ? "border-indigo-500/35 bg-slate-900/50 scale-[1.015] shadow-2xl"
@@ -70,6 +70,8 @@ export default function FAQ() {
             >
               <button
                 onClick={() => toggle(idx)}
+                aria-expanded={openIndex === idx}
+                aria-controls={`faq-answer-${idx}`}
                 className={`flex justify-between items-center w-full text-left px-7 py-5 focus:outline-none transition-colors duration-300 ${
                   openIndex === idx ? "bg-slate-950/20" : "hover:bg-white/[0.02]"
                 }`}
@@ -87,8 +89,9 @@ export default function FAQ() {
                 </span>
               </button>
               <div
+                id={`faq-answer-${idx}`}
                 className={`overflow-hidden transition-all duration-500 ${
-                  openIndex === idx ? "max-h-40 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2"
+                  openIndex === idx ? "max-h-screen opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2"
                 }`}
                 style={{
                   transition:

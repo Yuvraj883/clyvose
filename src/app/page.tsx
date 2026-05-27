@@ -1,4 +1,3 @@
-'use client'
 import Hero from "../../components/HeroSection";
 import SolutionSection from "../../components/SolutionSection";
 import SocialProof from "../../components/SocialProof";

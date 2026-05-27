@@ -11,7 +11,7 @@ const deliveredProjects = [
       "Built and launched a clean brand experience focused on product discovery and direct enquiries.",
     impact: "⚡ Improved brand presence and lead capture",
     link: "https://www.tamanaindia.com/",
-    image: "/tamana-india.png",
+    image: "/tamana-india.webp",
   },
   {
     name: "EasilyFamous",
@@ -21,7 +21,17 @@ const deliveredProjects = [
       "Delivered a high-conversion SMM service panel experience with clear service discovery and streamlined user flows.",
     impact: "📈 Improved onboarding and order intent",
     link: "https://easilyfamous.com/",
-    image: "/easily-famous.png",
+    image: "/easily-famous.webp",
+  },
+  {
+    name: "Cell Nano Solutions",
+    category: "Deep-Tech & E-Commerce",
+    timeline: "Live",
+    outcome:
+      "Crafted a modern storefront and informational site for a pioneering nanocellulose company, featuring product listings, market applications across 8+ industries, and a free sample ordering flow.",
+    impact: "🧪 Global visibility for cutting-edge nanocellulose products",
+    link: "https://www.cellnanosolutions.com/",
+    image: "/cell-nano.webp",
   },
 
   {
@@ -32,8 +42,9 @@ const deliveredProjects = [
       "Designed and developed a full-featured publishing platform with WooCommerce integration, enabling book sales on Amazon, online courses, and event hosting for the Book Turner Gala.",
     impact: "📚 Seamless book discovery, purchase, and event registration",
     link: "https://vitalvishwapublications.com/",
-    image: "/vital-vishwa.png",
+    image: "/vital-vishwa.webp",
   },
+
   {
     name: "HealHub India",
     category: "Healthcare Platform",
@@ -42,18 +53,9 @@ const deliveredProjects = [
       "Built a clean, accessible healthcare information portal showcasing common medical procedures, helping patients discover services and connect with providers.",
     impact: "🏥 Improved patient outreach and procedure awareness",
     link: "https://www.healhubindia.in/",
-    image: "/heal-hub.png",
+    image: "/heal-hub.webp",
   },
-  {
-    name: "Cell Nano Solutions",
-    category: "Deep-Tech & E-Commerce",
-    timeline: "Live",
-    outcome:
-      "Crafted a modern storefront and informational site for a pioneering nanocellulose company, featuring product listings, market applications across 8+ industries, and a free sample ordering flow.",
-    impact: "🧪 Global visibility for cutting-edge nanocellulose products",
-    link: "https://www.cellnanosolutions.com/",
-    image: "/cell-nano.png",
-  },
+
   {
     name: "PC-MSIT Placement Portal",
     category: "Education Portal",
@@ -62,7 +64,7 @@ const deliveredProjects = [
       "Executed full placement process digitalisation for Maharaja Surajmal Institute of Technology, covering student, coordinator, and placement workflows.",
     impact: "🚀 End-to-end placement operations moved online",
     link: "https://placement.msit.in/sign-in",
-    image: "/pc-msit.png",
+    image: "/pc-msit.webp",
   },
 ];
 
@@ -126,8 +128,8 @@ export default function ProjectsDelivered() {
     return () => { if (autoRef.current) clearInterval(autoRef.current); };
   }, [resetAuto]);
 
-  const handlePrev = () => { goTo("left"); resetAuto(); };
-  const handleNext = () => { goTo("right"); resetAuto(); };
+  const handlePrev = useCallback(() => { goTo("left"); resetAuto(); }, [goTo, resetAuto]);
+  const handleNext = useCallback(() => { goTo("right"); resetAuto(); }, [goTo, resetAuto]);
 
   // Touch / swipe
   const onTouchStart = (e: React.TouchEvent) => {
@@ -136,19 +138,28 @@ export default function ProjectsDelivered() {
   const onTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX.current === null) return;
     const diff = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) diff > 0 ? handleNext() : handlePrev();
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
     touchStartX.current = null;
   };
 
-  // Keyboard
+  // Keyboard — dep array added to prevent re-attaching on every render;
+  // guard against hijacking arrow keys while user is typing in a form field.
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      const tag = (document.activeElement as HTMLElement)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
       if (e.key === "ArrowRight") handleNext();
       if (e.key === "ArrowLeft") handlePrev();
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  });
+  }, [handleNext, handlePrev]);
 
   // The track slides left by (current * stepPx)
   const translateX = -(current * stepPx);
@@ -212,7 +223,7 @@ export default function ProjectsDelivered() {
         {/* ── Sliding track ── */}
         <div
           ref={containerRef}
-          className="overflow-hidden"
+          className="overflow-hidden p-5 -m-5"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -258,8 +269,8 @@ export default function ProjectsDelivered() {
                 aria-label={`Go to project ${i + 1}`}
                 aria-pressed={active}
                 className={`h-1.5 rounded-full transition-all duration-300 ${active
-                    ? "w-6 bg-indigo-400 shadow-[0_0_8px_rgba(99,102,241,0.6)]"
-                    : "w-1.5 bg-slate-700 hover:bg-slate-500"
+                  ? "w-6 bg-indigo-400 shadow-[0_0_8px_rgba(99,102,241,0.6)]"
+                  : "w-1.5 bg-slate-700 hover:bg-slate-500"
                   }`}
               />
             );
@@ -281,10 +292,11 @@ function ProjectCard({ project }: { project: Project }) {
       {/* Clyvos logo badge */}
       <div className="absolute -top-4 -left-3.5 z-10 w-11 h-11 rounded-full border border-white/10 bg-slate-950 shadow-[0_4px_24px_rgba(99,102,241,0.25)] p-1.5 transition-transform duration-300 group-hover:scale-105">
         <Image
-          src="/logo.png"
+          src="/logo.webp"
           alt="Clyvos logo"
           width={40}
           height={40}
+          sizes="44px"
           className="w-full h-full rounded-full object-cover"
         />
       </div>
@@ -296,6 +308,7 @@ function ProjectCard({ project }: { project: Project }) {
           alt={`${project.name} screenshot`}
           width={1200}
           height={675}
+          sizes="(max-width: 768px) 100vw, 33vw"
           className="w-full h-44 object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
         />
       </div>

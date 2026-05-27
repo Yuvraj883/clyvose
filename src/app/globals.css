@@ -100,3 +100,142 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   animation: border-draw 4s ease-in-out infinite;
 }
 
+/* ── Hero Section animations (moved from inline <style>) ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+@keyframes float-slow2 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-24px) scale(1.05); }
+}
+@keyframes float-slow3 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(20px) scale(1.08); }
+}
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(16px); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes scale-in {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes logo-spin-bounce {
+  0% { transform: scale(0.9) rotate(-15deg) translateY(-10px); opacity: 0; }
+  60% { transform: scale(1.05) rotate(5deg) translateY(4px); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg) translateY(0); opacity: 1; }
+}
+
+.animate-float { animation: float 5s ease-in-out infinite; }
+.animate-float-slow2 { animation: float-slow2 8s ease-in-out infinite; }
+.animate-float-slow3 { animation: float-slow3 10s ease-in-out infinite; }
+.animate-float-reverse { animation: float-reverse 5s ease-in-out infinite; }
+.animate-blink { animation: blink 1.2s steps(2, start) infinite; }
+.animate-scale-in { animation: scale-in 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-logo-spin-bounce { animation: logo-spin-bounce 1s cubic-bezier(0.16,1,0.3,1) 0.3s both; }
+
+/* ── Social Proof animations (moved from inline <style>) ── */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(24px); }
+}
+@keyframes star-pop {
+  0% { transform: scale(0.8) rotate(-10deg); opacity: 0.5; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+@keyframes avatar-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+.animate-float-slower { animation: float-slower 12s ease-in-out infinite; }
+.star-pop { animation: star-pop 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-avatar-float { animation: avatar-float 3.5s ease-in-out infinite; }
+
+.avatar-gradient {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+  padding: 2px;
+  border-radius: 9999px;
+  display: inline-block;
+}
+.avatar-inner {
+  background: #090d16;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.headline-animated {
+  background: linear-gradient(270deg, #60a5fa, #a78bfa, #f472b6, #60a5fa);
+  background-size: 600% 600%;
+  animation: gradient-move 6s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+.testimonial-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.testimonial-hover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(139, 92, 246, 0.35);
+  background: rgba(15, 23, 42, 0.55);
+  box-shadow: 0 16px 40px -10px rgba(99, 102, 241, 0.15);
+}
+.dot {
+  transition: transform 0.2s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+}
+.dot:hover {
+  transform: scale(1.2);
+}
+
+/* ── HowItWorks glow (moved from inline <style>) ── */
+@keyframes glow {
+  0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.25); }
+  50% { box-shadow: 0 0 30px 6px rgba(139,92,246,0.2); }
+  100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.25); }
+}
+.animate-glow {
+  animation: glow 2.5s infinite;
+}
+
+/* ── Reduced motion: disable all non-essential animations ── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-slow2,
+  .animate-float-slow3,
+  .animate-float-reverse,
+  .animate-float-slow,
+  .animate-float-slower,
+  .animate-scale-in,
+  .animate-logo-spin-bounce,
+  .animate-blink,
+  .animate-fade-in-up,
+  .animate-pop,
+  .animate-pulse-slow,
+  .animate-gradient-flow,
+  .animate-border-draw,
+  .animate-avatar-float,
+  .animate-glow,
+  .star-pop,
+  .headline-animated {
+    animation: none !important;
+    transition: none !important;
+  }
+}

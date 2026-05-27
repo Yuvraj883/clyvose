@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -29,22 +30,21 @@ export default function HowItWorks() {
   ];
   
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const titles = ["🛠 How It Works", "🛠 Simple, Fast, Transparent"];
     let currentIndex = 0;
-    
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % titles.length;
       setTypedText(titles[currentIndex] || "🛠 How It Works");
     }, 3000);
-    
     return () => clearInterval(interval);
   }, []);
-  
+
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % steps.length);
     }, 5000);
-    
     return () => clearInterval(interval);
   }, [steps.length]);
 
@@ -101,7 +101,7 @@ export default function HowItWorks() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, idx) => (
             <motion.div
-              key={idx}
+              key={step.title}
               className={`backdrop-blur-lg p-7 rounded-3xl border shadow-xl relative transition-all duration-500 ${
                 activeIndex === idx
                   ? 'border-indigo-500/30 bg-slate-900/50 scale-105 shadow-2xl animate-glow'
@@ -126,16 +126,6 @@ export default function HowItWorks() {
           ))}
         </div>
       </div>
-      <style jsx global>{`
-        @keyframes glow {
-          0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.25); }
-          50% { box-shadow: 0 0 30px 6px rgba(139,92,246,0.2); }
-          100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.25); }
-        }
-        .animate-glow {
-          animation: glow 2.5s infinite;
-        }
-      `}</style>
     </motion.section>
   );
 }

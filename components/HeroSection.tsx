@@ -23,18 +23,21 @@ export default function Hero() {
     setTypedText("");
     setTyping(true);
     let charIndex = 0;
-    let timeoutId: NodeJS.Timeout | undefined;
+    let cancelled = false;
 
     function type() {
+      if (cancelled) return;
       if (charIndex < currentService.length) {
         setTypedText(currentService.slice(0, charIndex + 1));
         charIndex++;
-        timeoutId = setTimeout(type, 70);
+        setTimeout(type, 70);
       } else {
         setTyping(false);
-        timeoutId = setTimeout(() => {
+        setTimeout(() => {
+          if (cancelled) return;
           setFade(true);
           setTimeout(() => {
+            if (cancelled) return;
             setServiceIndex((prev) => (prev + 1) % services.length);
             setFade(false);
           }, 400);
@@ -43,7 +46,7 @@ export default function Hero() {
     }
     type();
     return () => {
-      if (timeoutId) clearTimeout(timeoutId);
+      cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serviceIndex]);
@@ -209,8 +212,10 @@ export default function Hero() {
                     <Image
                       width={100}
                       height={100}
-                      src="/logo.png"
+                      src="/logo.webp"
                       alt="Clyvos Logo"
+                      priority
+                      sizes="112px"
                       className="w-28 h-28 object-contain rounded-full shadow-2xl"
                     />
                   </div>
@@ -225,58 +230,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Custom keyframes and style utilities */}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-16px); }
-        }
-        @keyframes float-slow2 {
-          0%, 100% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(-24px) scale(1.05); }
-        }
-        @keyframes float-slow3 {
-          0%, 100% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(20px) scale(1.08); }
-        }
-        @keyframes float-reverse {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(16px); }
-        }
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-        @keyframes scale-in {
-          0% { transform: scale(0.92); opacity: 0; }
-          100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes logo-spin-bounce {
-          0% { transform: scale(0.9) rotate(-15deg) translateY(-10px); opacity: 0; }
-          60% { transform: scale(1.05) rotate(5deg) translateY(4px); opacity: 1; }
-          100% { transform: scale(1) rotate(0deg) translateY(0); opacity: 1; }
-        }
-        
-        .animate-float { animation: float 5s ease-in-out infinite; }
-        .animate-float-slow2 { animation: float-slow2 8s ease-in-out infinite; }
-        .animate-float-slow3 { animation: float-slow3 10s ease-in-out infinite; }
-        .animate-float-reverse { animation: float-reverse 5s ease-in-out infinite; }
-        .animate-blink { animation: blink 1.2s steps(2, start) infinite; }
-        .animate-scale-in { animation: scale-in 0.8s cubic-bezier(0.16,1,0.3,1) both; }
-        .animate-logo-spin-bounce { animation: logo-spin-bounce 1s cubic-bezier(0.16,1,0.3,1) 0.3s both; }
-
-        @media (prefers-reduced-motion: reduce) {
-          .animate-float,
-          .animate-float-slow2,
-          .animate-float-slow3,
-          .animate-float-reverse,
-          .animate-scale-in,
-          .animate-logo-spin-bounce,
-          .animate-blink {
-            animation: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

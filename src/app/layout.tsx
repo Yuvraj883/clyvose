@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     "mobile app development",
     "startup product development",
   ],
+  alternates: {
+    canonical: "https://clyvose.vercel.app",
+  },
   openGraph: {
     title: "Clyvos | Digital Product Development",
     description:
@@ -35,20 +38,33 @@ export const metadata: Metadata = {
     url: "https://clyvose.vercel.app",
     siteName: "Clyvos",
     type: "website",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "Clyvos — Digital Product Development",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Clyvos | Digital Product Development",
     description:
       "Fast MVPs, modern web and mobile apps, and reliable product delivery for growing teams.",
+    images: ["/android-chrome-512x512.png"],
   },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    shortcut: "/favicon-32x32.png",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    other: [
+      { rel: "icon", url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { rel: "icon", url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
   },
   manifest: "/site.webmanifest",
 };

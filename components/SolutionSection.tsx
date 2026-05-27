@@ -1,4 +1,3 @@
-// app/page.tsx
 'use client';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
@@ -25,15 +24,14 @@ export default function SolutionSection() {
   ];
 
   return (
-    <div className="relative overflow-hidden bg-[#030712] py-20">
+    <section className="relative overflow-hidden bg-[#030712] py-20">
       {/* Decorative background ambient lighting */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-[400px] h-[400px] rounded-full blur-[120px] glow-spot-blue opacity-40 animate-pulse-slow" />
         <div className="absolute bottom-10 right-10 w-[400px] h-[400px] rounded-full blur-[120px] glow-spot-purple opacity-30 animate-pulse-slow" />
       </div>
 
-      {/* Problem/Solution Section */}
-      <section className="py-12 relative z-10" ref={ref}>
+      <div className="py-12 relative z-10" ref={ref}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -96,9 +94,9 @@ export default function SolutionSection() {
                   },
                 }}
               >
-                {problems.map((problem, index) => (
+                {problems.map((problem) => (
                   <motion.li
-                    key={index}
+                    key={problem}
                     className="flex items-start gap-3 bg-red-950/15 border border-red-900/20 rounded-xl px-4 py-3 hover:bg-red-950/30 hover:border-red-900/35 transition-all duration-200 cursor-pointer shadow-sm text-slate-300"
                     variants={{
                       hidden: { opacity: 0, x: -20 },
@@ -172,9 +170,9 @@ export default function SolutionSection() {
                   },
                 }}
               >
-                {solutions.map((solution, index) => (
+                {solutions.map((solution) => (
                   <motion.li
-                    key={index}
+                    key={solution}
                     className="flex items-start gap-3 bg-blue-950/15 border border-blue-900/20 rounded-xl px-4 py-3 hover:bg-blue-950/30 hover:border-blue-900/35 transition-all duration-200 cursor-pointer shadow-sm text-slate-300"
                     variants={{
                       hidden: { opacity: 0, x: 20 },
@@ -216,7 +214,7 @@ export default function SolutionSection() {
             </motion.div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

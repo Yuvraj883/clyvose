@@ -1,3 +1,4 @@
+'use client';
 import { motion } from "framer-motion";
 import { FaBolt, FaChartBar, FaHandshake } from "react-icons/fa";
 
@@ -64,7 +65,7 @@ export default function Pricing() {
         <div className="grid md:grid-cols-3 gap-8 items-stretch mt-10">
           {plans.map((plan, idx) => (
             <motion.div
-              key={idx}
+              key={plan.name}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: plan.popular ? 1.03 : 1 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -107,8 +108,8 @@ export default function Pricing() {
                 </p>
 
                 <ul className="text-left space-y-3 mb-8 min-h-32">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start text-slate-300 text-sm sm:text-base font-medium">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex items-start text-slate-300 text-sm sm:text-base font-medium">
                       <span className="text-emerald-400 mr-2.5 font-extrabold text-lg leading-none">✓</span>
                       <span>{feature}</span>
                     </li>

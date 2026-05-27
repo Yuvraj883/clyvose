@@ -37,7 +37,7 @@ const features = [
 
 const Feature = () => {
   return (
-    <section id="features" className="py-24 bg-[#030712] relative overflow-hidden">
+    <section id="features" className="py-14 md:py-24 bg-[#030712] relative overflow-hidden">
       {/* Ambient background glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[140px] glow-spot-purple opacity-20 pointer-events-none" />

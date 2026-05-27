@@ -40,12 +40,27 @@ export default function SocialProof() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [starAnim, setStarAnim] = useState(false);
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     setIsVisible(true);
     setStarAnim(true);
+    if (!isInView) return;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
     const interval = setInterval(() => {
@@ -54,7 +69,7 @@ export default function SocialProof() {
       setTimeout(() => setStarAnim(true), 100);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isInView]);
 
   // Animate carousel slide
   useEffect(() => {
@@ -80,7 +95,7 @@ export default function SocialProof() {
   };
 
   return (
-    <section className="relative py-24 bg-[#030712] overflow-hidden">
+    <section ref={sectionRef} className="relative py-14 md:py-24 bg-[#030712] overflow-hidden">
       {/* Animated glowing mesh elements */}
       <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full blur-[120px] glow-spot-blue opacity-30 animate-float-slow pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-[120px] glow-spot-purple opacity-25 animate-float-slower pointer-events-none" />

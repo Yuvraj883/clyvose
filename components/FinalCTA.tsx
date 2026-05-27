@@ -6,7 +6,7 @@ export default function FinalCTA() {
 
   return (
     <section
-      className="bg-[#030712] py-20 flex items-center justify-center min-h-[45vh] transition-all duration-700 relative overflow-hidden animate-fade-in-up"
+      className="bg-[#030712] py-12 md:py-20 flex items-center justify-center min-h-[45vh] transition-all duration-700 relative overflow-hidden animate-fade-in-up"
       ref={sectionRef}
     >
       {/* Ambient background glows */}

@@ -24,7 +24,7 @@ export default function SolutionSection() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#030712] py-20">
+    <section className="relative overflow-hidden bg-[#030712] py-12 md:py-20">
       {/* Decorative background ambient lighting */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-[400px] h-[400px] rounded-full blur-[120px] glow-spot-blue opacity-40 animate-pulse-slow" />

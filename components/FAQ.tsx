@@ -38,7 +38,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-24 bg-[#030712] relative overflow-hidden">
+    <section id="faq" className="py-14 md:py-24 bg-[#030712] relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-[450px] h-[450px] rounded-full blur-[140px] glow-spot-blue opacity-25 pointer-events-none" />

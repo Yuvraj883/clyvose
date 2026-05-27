@@ -42,7 +42,7 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="py-24 bg-[#030712] relative overflow-hidden">
+    <section id="pricing" className="py-14 md:py-24 bg-[#030712] relative overflow-hidden">
       {/* Premium ambient glows */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="w-80 h-80 rounded-full blur-[140px] absolute -top-20 -left-20 glow-spot-blue opacity-30 animate-pulse-slow" />
@@ -103,7 +103,7 @@ export default function Pricing() {
 
                 <h3 className="text-xl font-bold mb-1.5 text-white font-heading tracking-wide">{plan.name}</h3>
                 <p className="text-slate-400 mb-6 text-sm font-medium leading-relaxed min-h-10">{plan.description}</p>
-                <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 mb-6 font-heading tracking-tight">
+                <p className="text-xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 mb-6 font-heading tracking-tight">
                   {plan.price}
                 </p>
 

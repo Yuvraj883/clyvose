@@ -118,10 +118,25 @@ export default function ProjectsDelivered() {
     [maxIndex]
   );
 
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const resetAuto = useCallback(() => {
     if (autoRef.current) clearInterval(autoRef.current);
+    if (!isInView) return;
     autoRef.current = setInterval(() => goTo("right"), 4500);
-  }, [goTo]);
+  }, [goTo, isInView]);
 
   useEffect(() => {
     resetAuto();
@@ -167,7 +182,7 @@ export default function ProjectsDelivered() {
   return (
     <section
       id="projects-delivered"
-      className="py-24 bg-[#030712] relative overflow-hidden"
+      className="py-14 md:py-24 bg-[#030712] relative overflow-hidden"
     >
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none">

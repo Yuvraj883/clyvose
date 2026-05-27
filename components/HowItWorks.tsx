@@ -1,10 +1,12 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 export default function HowItWorks() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [typedText, setTypedText] = useState("🛠 How It Works");
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.15 });
   
   const steps = [
     {
@@ -30,6 +32,7 @@ export default function HowItWorks() {
   ];
   
   useEffect(() => {
+    if (!isInView) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const titles = ["🛠 How It Works", "🛠 Simple, Fast, Transparent"];
     let currentIndex = 0;
@@ -38,15 +41,16 @@ export default function HowItWorks() {
       setTypedText(titles[currentIndex] || "🛠 How It Works");
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isInView]);
 
   useEffect(() => {
+    if (!isInView) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % steps.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [steps.length]);
+  }, [steps.length, isInView]);
 
   // Animation variants
   const sectionVariants = {
@@ -69,7 +73,8 @@ export default function HowItWorks() {
   return (
     <motion.section
       id="how-it-works"
-      className="py-24 bg-[#030712] relative overflow-hidden"
+      ref={sectionRef}
+      className="py-14 md:py-24 bg-[#030712] relative overflow-hidden"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}

@@ -38,36 +38,48 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-24 min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-100 animate-fade-in">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-4xl font-extrabold text-center mb-12 flex items-center justify-center gap-2">
-          <span className="text-blue-500 animate-bounce">💡</span> Frequently Asked Questions
-        </h2>
-        <div className="space-y-6">
+    <section className="py-24 bg-[#030712] relative overflow-hidden">
+      {/* Background ambient lighting */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-10 left-10 w-[450px] h-[450px] rounded-full blur-[140px] glow-spot-blue opacity-25 pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-[450px] h-[450px] rounded-full blur-[140px] glow-spot-purple opacity-20 pointer-events-none" />
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
+          <p className="inline-flex items-center rounded-full bg-indigo-500/10 border border-indigo-500/30 px-3.5 py-1 text-xs font-semibold text-indigo-300 mb-4 tracking-wide uppercase">
+            Questions
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-black text-center text-white font-heading tracking-tight">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div className="space-y-4">
           {faqs.map((faq, idx) => (
             <div
               key={idx}
-              className={`group bg-white border rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ${
+              className={`group border rounded-3xl overflow-hidden transition-all duration-500 ${
                 openIndex === idx
-                  ? "shadow-2xl border-blue-300 scale-[1.02]"
-                  : "border-gray-200 hover:shadow-xl hover:scale-[1.01]"
+                  ? "border-indigo-500/35 bg-slate-900/50 scale-[1.015] shadow-2xl"
+                  : "border-white/[0.05] bg-slate-900/25 hover:border-white/10 hover:scale-[1.005] hover:shadow-xl"
               }`}
               style={{
-                transition: "box-shadow 0.4s cubic-bezier(.4,2,.6,1), transform 0.4s cubic-bezier(.4,2,.6,1)",
+                transition: "box-shadow 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s",
               }}
             >
               <button
                 onClick={() => toggle(idx)}
-                className={`flex justify-between items-center w-full text-left px-7 py-6 focus:outline-none transition-colors duration-300 ${
-                  openIndex === idx ? "bg-blue-50" : "hover:bg-gray-50"
+                className={`flex justify-between items-center w-full text-left px-7 py-5 focus:outline-none transition-colors duration-300 ${
+                  openIndex === idx ? "bg-slate-950/20" : "hover:bg-white/[0.02]"
                 }`}
               >
-                <span className="font-semibold text-lg text-gray-900 transition-colors duration-300">
+                <span className="font-bold text-base sm:text-lg text-white font-heading tracking-wide transition-colors duration-300 group-hover:text-blue-300">
                   {faq.question}
                 </span>
                 <span
-                  className={`text-blue-500 text-2xl font-bold transition-transform duration-500 ${
-                    openIndex === idx ? "rotate-180 scale-125" : "rotate-0 scale-100 group-hover:scale-110"
+                  className={`text-indigo-400 text-lg transition-transform duration-500 ${
+                    openIndex === idx ? "rotate-180 scale-120" : "rotate-0 scale-100 group-hover:scale-110"
                   }`}
                   style={{ display: "inline-block" }}
                 >
@@ -80,10 +92,10 @@ export default function FAQ() {
                 }`}
                 style={{
                   transition:
-                    "max-height 0.5s cubic-bezier(.4,2,.6,1), opacity 0.4s, transform 0.4s cubic-bezier(.4,2,.6,1)",
+                    "max-height 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1)",
                 }}
               >
-                <div className="px-7 pb-6 pt-0 text-gray-700 text-base border-t border-gray-100 animate-fade-in">
+                <div className="px-7 pb-6 pt-1 text-slate-300 text-sm sm:text-base leading-relaxed border-t border-white/[0.03]">
                   {faq.answer}
                 </div>
               </div>
@@ -91,33 +103,15 @@ export default function FAQ() {
           ))}
         </div>
 
-        <div className="text-center mt-14">
-          <p className="text-gray-500 mb-4 text-lg">Still have questions?</p>
+        <div className="text-center mt-16">
+          <p className="text-slate-400 mb-4 text-base font-medium">Still have questions?</p>
           <a
             href="mailto:clyvos@zohomail.in?subject=Discovery%20Call%20Request"
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 inline-block animate-glow"
-            style={{
-              boxShadow: "0 0 0 0 rgba(99,102,241,0.7)",
-              animation: "glow 2s infinite alternate"
-            }}
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-indigo-600 hover:to-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-[0_4px_16px_rgba(99,102,241,0.25)] hover:shadow-[0_4px_24px_rgba(99,102,241,0.45)] transition-all duration-300 inline-block hover:scale-[1.03] active:scale-95"
           >
             Contact Us
           </a>
         </div>
-        <style jsx>{`
-          @keyframes glow {
-            0% {
-              box-shadow: 0 0 0 0 rgba(99,102,241,0.7);
-            }
-            100% {
-              box-shadow: 0 0 24px 8px rgba(139,92,246,0.25);
-            }
-          }
-          @keyframes fade-in {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-        `}</style>
       </div>
     </section>
   );

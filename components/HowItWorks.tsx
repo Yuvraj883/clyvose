@@ -8,22 +8,22 @@ export default function HowItWorks() {
   const steps = [
     {
       icon: "💡",
-      title: '1. Discovery'.replace(/'/g, '&apos;'),
+      title: '1. Discovery',
       description: 'We understand your vision, goals, and technical needs in a quick call or chat.',
     },
     {
       icon: "💻",
-      title: '2. Development'.replace(/'/g, '&apos;'),
+      title: '2. Development',
       description: 'We start building—frontend, backend, or both—using modern, scalable tech.',
     },
     {
       icon: "💬",
-      title: '3. Feedback & Iteration'.replace(/'/g, '&apos;'),
+      title: '3. Feedback',
       description: 'We share early builds, collect your feedback, and refine the product.',
     },
     {
       icon: "🚀",
-      title: '4. Launch & Handoff'.replace(/'/g, '&apos;'),
+      title: '4. Launch',
       description: 'We deliver the final product and guide you through launch & post-launch support.',
     },
   ];
@@ -34,7 +34,7 @@ export default function HowItWorks() {
     
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % titles.length;
-      setTypedText(titles[currentIndex]);
+      setTypedText(titles[currentIndex] || "🛠 How It Works");
     }, 3000);
     
     return () => clearInterval(interval);
@@ -58,28 +58,31 @@ export default function HowItWorks() {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.7 },
+      transition: { delay: i * 0.15, duration: 0.6 },
     }),
   };
   const iconVariants = {
     initial: { scale: 1 },
-    animate: { scale: [1, 1.2, 1], transition: { duration: 0.8 } },
+    animate: { scale: [1, 1.15, 1], transition: { duration: 0.6 } },
   };
 
   return (
     <motion.section
-      className="py-20 min-h-[80vh] bg-gradient-to-br from-blue-100 via-white to-purple-100 relative overflow-hidden"
+      className="py-24 bg-[#030712] relative overflow-hidden"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.25 }}
       variants={sectionVariants}
     >
-      {/* Glassy background shapes */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-200 opacity-30 rounded-full blur-3xl -z-10 animate-pulse" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-200 opacity-30 rounded-full blur-3xl -z-10 animate-pulse" />
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      {/* Decorative cosmic glows */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-0 w-[450px] h-[450px] rounded-full blur-[140px] glow-spot-blue opacity-30 pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[450px] h-[450px] rounded-full blur-[140px] glow-spot-purple opacity-20 pointer-events-none" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
         <motion.h2 
-          className="text-4xl md:text-5xl font-extrabold mb-4 transition-all duration-500 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500 drop-shadow-lg"
+          className="text-4xl sm:text-5xl font-black mb-4 transition-all duration-500 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 font-heading tracking-tight drop-shadow-md"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
@@ -87,7 +90,7 @@ export default function HowItWorks() {
           {typedText}
         </motion.h2>
         <motion.p
-          className="text-gray-700 mb-12 max-w-2xl mx-auto text-lg md:text-xl"
+          className="text-slate-400 mb-16 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed font-medium"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
@@ -95,19 +98,19 @@ export default function HowItWorks() {
           We keep things simple, fast, and transparent—here&apos;s how we get from idea to product.
         </motion.p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, idx) => (
             <motion.div
               key={idx}
-              className={`backdrop-blur-lg bg-white/70 p-7 rounded-2xl shadow-xl border border-white/40 relative transition-all duration-500 ${
+              className={`backdrop-blur-lg p-7 rounded-3xl border shadow-xl relative transition-all duration-500 ${
                 activeIndex === idx
-                  ? 'ring-4 ring-blue-400/60 scale-105 shadow-2xl animate-glow'
-                  : 'hover:shadow-2xl hover:scale-105'
+                  ? 'border-indigo-500/30 bg-slate-900/50 scale-105 shadow-2xl animate-glow'
+                  : 'border-white/[0.05] bg-slate-900/25 hover:border-white/10 hover:shadow-2xl hover:scale-105'
               }`}
               custom={idx}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.15 }}
               variants={cardVariants}
             >
               <motion.div
@@ -115,22 +118,22 @@ export default function HowItWorks() {
                 variants={iconVariants}
                 animate={activeIndex === idx ? 'animate' : 'initial'}
               >
-                <span className="text-5xl md:text-6xl drop-shadow-lg">{step.icon}</span>
+                <span className="text-5xl drop-shadow-[0_4px_16px_rgba(99,102,241,0.2)]">{step.icon}</span>
               </motion.div>
-              <h3 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">{step.title}</h3>
-              <p className="text-gray-600 text-base md:text-lg">{step.description}</p>
+              <h3 className="text-xl font-bold mb-2 text-white font-heading tracking-wide">{step.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed font-medium">{step.description}</p>
             </motion.div>
           ))}
         </div>
       </div>
       <style jsx global>{`
         @keyframes glow {
-          0% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
-          50% { box-shadow: 0 0 40px 10px rgba(139,92,246,0.25); }
-          100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
+          0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.25); }
+          50% { box-shadow: 0 0 30px 6px rgba(139,92,246,0.2); }
+          100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.25); }
         }
         .animate-glow {
-          animation: glow 2s infinite;
+          animation: glow 2.5s infinite;
         }
       `}</style>
     </motion.section>

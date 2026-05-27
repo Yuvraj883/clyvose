@@ -4,34 +4,19 @@ import { useState, useEffect, useRef } from "react";
 
 const testimonials = [
   {
-    name: 'Amit Verma',
-    title: 'Founder, StartupX',
-    quote: 'Clyvos delivered our MVP faster than expected. Their attention to detail and flexibility was a game-changer for us.',
+    name: 'Aman Goyal',
+    title: 'Founder, Tamana India',
+    quote: 'Clyvos understood our vision perfectly. Their technical expertise and seamless delivery process made a huge difference in building our platform.',
   },
   {
-    name: 'Sarah Lee',
-    title: 'CTO, GreenTech',
-    quote: 'Great experience! Smooth communication and solid tech delivery. Highly recommend the team at Clyvos.',
+    name: 'Professor RS Rawat',
+    title: 'PC MSIT',
+    quote: 'The team at Clyvos demonstrated exceptional professionalism and skill. The quality of work they delivered exceeded our expectations and greatly benefited our institution.',
   },
   {
-    name: 'Carlos Mendes',
-    title: 'Product Manager, FinEdge',
-    quote: 'The Clyvos team exceeded our expectations. The UI/UX was world-class and the delivery was always on time.',
-  },
-  {
-    name: 'Emily Chen',
-    title: 'CEO, Healthify',
-    quote: 'We saw a 40% faster go-to-market thanks to Clyvos. Their process is seamless and the results speak for themselves.',
-  },
-  {
-    name: 'Liam O\'Brien',
-    title: 'Lead Engineer, EduNext',
-    quote: 'Clyvos is our go-to for rapid prototyping. The quality and speed are unmatched.',
-  },
-  {
-    name: 'Priya Singh',
-    title: 'COO, Marketly',
-    quote: 'From ideation to launch, Clyvos was a true partner. The team is creative, responsive, and highly skilled.',
+    name: 'Love Deep Kashyap',
+    title: 'Founder, Easily famous',
+    quote: 'Partnering with Clyvos was a game-changer for Easily famous. Their innovative approach and dedication to the product\'s success are truly remarkable.',
   },
 ];
 
@@ -62,11 +47,11 @@ export default function SocialProof() {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
     carouselRef.current.animate([
-      { opacity: 0, transform: 'translateY(30px)' },
+      { opacity: 0, transform: 'translateY(20px)' },
       { opacity: 1, transform: 'translateY(0)' }
     ], {
-      duration: 600,
-      easing: 'cubic-bezier(0.4,0,0.2,1)'
+      duration: 500,
+      easing: 'cubic-bezier(0.16,1,0.3,1)'
     });
   }, [activeTestimonial]);
 
@@ -80,41 +65,37 @@ export default function SocialProof() {
   };
 
   return (
-    <section className="relative py-12 md:py-16 bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden">
-      {/* Animated floating background elements */}
-      <div className="absolute -top-10 -left-10 w-56 h-56 bg-blue-200 opacity-30 rounded-full blur-3xl animate-float-slow z-0" />
-      <div className="absolute -bottom-12 right-0 w-72 h-72 bg-purple-200 opacity-20 rounded-full blur-3xl animate-float-slower z-0" />
-      <div className="absolute top-1/2 left-1/2 w-28 h-28 bg-pink-100 opacity-20 rounded-full blur-2xl animate-float-fast z-0" />
+    <section className="relative py-24 bg-[#030712] overflow-hidden">
+      {/* Animated glowing mesh elements */}
+      <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full blur-[120px] glow-spot-blue opacity-30 animate-float-slow pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-[120px] glow-spot-purple opacity-25 animate-float-slower pointer-events-none" />
       
       <style>{`
-        @keyframes float-slow { 0% { transform: translateY(0) } 50% { transform: translateY(-20px) } 100% { transform: translateY(0) } }
-        @keyframes float-slower { 0% { transform: translateY(0) } 50% { transform: translateY(30px) } 100% { transform: translateY(0) } }
-        @keyframes float-fast { 0% { transform: translateY(0) } 50% { transform: translateY(-10px) } 100% { transform: translateY(0) } }
-        .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
-        .animate-float-slower { animation: float-slower 14s ease-in-out infinite; }
-        .animate-float-fast { animation: float-fast 5s ease-in-out infinite; }
-        .star-pop { animation: star-pop 0.7s cubic-bezier(.4,2,.6,1) both; }
-        @keyframes star-pop { 0% { transform: scale(0.7) rotate(-20deg); opacity: 0.5; } 60% { transform: scale(1.2) rotate(10deg); opacity: 1; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
-        .card-glass { box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10); border: 1.5px solid rgba(59,130,246,0.15); backdrop-filter: blur(16px); }
-        .animate-avatar-float { animation: avatar-float 4s ease-in-out infinite; }
-        @keyframes avatar-float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
+        @keyframes float-slow { 0% { transform: translateY(0) } 50% { transform: translateY(-16px) } 100% { transform: translateY(0) } }
+        @keyframes float-slower { 0% { transform: translateY(0) } 50% { transform: translateY(24px) } 100% { transform: translateY(0) } }
+        .animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+        .animate-float-slower { animation: float-slower 12s ease-in-out infinite; }
+        .star-pop { animation: star-pop 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+        @keyframes star-pop { 0% { transform: scale(0.8) rotate(-10deg); opacity: 0.5; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
+        .animate-avatar-float { animation: avatar-float 3.5s ease-in-out infinite; }
+        @keyframes avatar-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
         .avatar-gradient {
-          background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
-          padding: 2.5px;
+          background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+          padding: 2px;
           border-radius: 9999px;
           display: inline-block;
         }
         .avatar-inner {
-          background: white;
+          background: #090d16;
           border-radius: 9999px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         .headline-animated {
-          background: linear-gradient(270deg, #2563eb, #a21caf, #db2777, #2563eb);
+          background: linear-gradient(270deg, #60a5fa, #a78bfa, #f472b6, #60a5fa);
           background-size: 600% 600%;
-          animation: gradient-move 8s ease-in-out infinite;
+          animation: gradient-move 6s ease-in-out infinite;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -125,63 +106,41 @@ export default function SocialProof() {
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
+        .testimonial-hover {
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
         .testimonial-hover:hover {
-          transform: translateY(-6px) scale(1.025);
-          box-shadow: 0 12px 36px 0 rgba(59,130,246,0.13);
-          border-color: #a78bfa;
+          transform: translateY(-5px);
+          border-color: rgba(139, 92, 246, 0.35);
+          background: rgba(15, 23, 42, 0.55);
+          box-shadow: 0 16px 40px -10px rgba(99, 102, 241, 0.15);
         }
         .dot {
           transition: transform 0.2s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
         }
-        .dot:focus {
-          outline: 2px solid #2563eb;
-        }
         .dot:hover {
           transform: scale(1.2);
-          box-shadow: 0 0 0 4px #a5b4fc44;
-        }
-        .cta-animated {
-          transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s;
-        }
-        .cta-animated:hover {
-          transform: scale(1.04) translateY(-2px);
-          box-shadow: 0 8px 32px 0 #a78bfa33;
-        }
-        @media (prefers-reduced-motion: reduce), (max-width: 768px) {
-          .animate-float-slow,
-          .animate-float-slower,
-          .animate-float-fast,
-          .star-pop,
-          .animate-avatar-float,
-          .headline-animated {
-            animation: none !important;
-          }
-          .headline-animated {
-            background: none;
-            -webkit-text-fill-color: initial;
-            color: #1f2937;
-          }
         }
       `}</style>
-
+ 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}> 
-          <h2 className="headline-animated text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 drop-shadow-lg">
+          <h2 className="headline-animated text-3xl sm:text-4xl md:text-5xl font-black mb-3 tracking-tight font-heading">
             Trusted by Founders & Startups
           </h2>
-          <p className="text-gray-700 text-lg md:text-xl font-medium max-w-2xl mx-auto">
-            We&apos;re proud to build for ambitious teams around the world.
+          <p className="text-slate-400 text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed">
+            We&apos;re proud to build high-performance products for ambitious teams.
           </p>
         </div>
 
         {/* Rating indicator */}
-        <div className={`flex justify-center items-center mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}> 
-          <div className="flex items-center bg-white/80 px-6 py-2 rounded-full shadow-lg backdrop-blur-md border border-blue-100">
+        <div className={`flex justify-center items-center mb-10 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}> 
+          <div className="flex items-center bg-slate-900/40 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/[0.06] shadow-xl">
             <div className="flex mr-3">
               {[1, 2, 3, 4, 5].map((star) => (
                 <svg
                   key={star}
-                  className={`w-6 h-6 text-yellow-400 ${starAnim ? 'star-pop' : ''}`}
+                  className={`w-5 h-5 text-amber-400 ${starAnim ? 'star-pop' : ''}`}
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -189,17 +148,14 @@ export default function SocialProof() {
                 </svg>
               ))}
             </div>
-            <span className="text-base font-semibold text-blue-700">5/5 from our clients</span>
+            <span className="text-sm font-semibold text-blue-400">5/5 from our clients</span>
           </div>
         </div>
 
         {/* Testimonial carousel */}
         <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} mb-10`}> 
           <div className="flex justify-center items-center w-full">
-            <div
-              ref={carouselRef}
-              className="w-full max-w-3xl relative"
-            >
+            <div ref={carouselRef} className="w-full max-w-3xl relative">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
@@ -210,31 +166,30 @@ export default function SocialProof() {
                   }`}
                   aria-hidden={index !== activeTestimonial}
                 >
-                  <div className="relative bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl border border-blue-200 px-6 py-8 flex flex-col justify-center items-center min-h-[220px] overflow-hidden card-glass md:px-8 md:py-10 mx-auto testimonial-hover">
-                    {/* Gradient border/glow */}
-                    <div className="absolute inset-0 rounded-3xl pointer-events-none z-0" style={{boxShadow: '0 0 0 4px rgba(59,130,246,0.15), 0 8px 32px 0 rgba(31,38,135,0.10)'}} />
+                  <div className="relative bg-slate-900/35 border border-white/[0.05] backdrop-blur-xl rounded-3xl p-8 sm:p-10 flex flex-col justify-center items-center min-h-[220px] overflow-hidden testimonial-hover mx-auto">
                     {/* Decorative quote icon */}
-                    <div className="absolute -top-4 left-8 text-blue-300 opacity-30 z-10">
-                      <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                    <div className="absolute -top-3 left-8 text-blue-500/10 opacity-30 z-0 pointer-events-none">
+                      <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M7.17 21v-7.39c0-5.7 3.73-9.57 8.98-10.61l.99 2.15c-2.43.92-3.99 3.64-3.99 5.85h4v10H7.17zm-7.17 0v-7.39c0-5.7 3.75-9.57 9-10.61l1 2.15c-2.43.92-4 3.64-4 5.85h4v10H0z" />
                       </svg>
                     </div>
+                    
                     {/* Testimonial content */}
-                    <div className="relative pt-6 w-full h-full flex flex-col items-center z-10">
-                      <p className="text-gray-900 italic mb-6 text-lg md:text-xl font-medium text-center px-2 md:px-6">
-                        {testimonial.quote}
+                    <div className="relative pt-4 w-full h-full flex flex-col items-center z-10 text-center">
+                      <p className="text-slate-100 italic mb-8 text-lg sm:text-xl font-medium px-2 sm:px-6 leading-relaxed">
+                        &ldquo;{testimonial.quote}&rdquo;
                       </p>
                       <div className="flex items-center mt-2">
                         <span className="avatar-gradient animate-avatar-float mr-4">
                           <span className="avatar-inner w-12 h-12">
-                            <span className="text-blue-700 font-bold text-xl">
+                            <span className="text-blue-400 font-extrabold text-xl">
                               {testimonial.name.charAt(0)}
                             </span>
                           </span>
                         </span>
                         <div className="text-left">
-                          <p className="font-semibold text-gray-900 text-base leading-tight mb-1">{testimonial.name}</p>
-                          <p className="text-sm text-gray-500">{testimonial.title}</p>
+                          <p className="font-bold text-white text-base leading-tight font-heading mb-1">{testimonial.name}</p>
+                          <p className="text-xs text-slate-400 font-medium">{testimonial.title}</p>
                         </div>
                       </div>
                     </div>
@@ -243,16 +198,17 @@ export default function SocialProof() {
               ))}
             </div>
           </div>
+
           {/* Indicator dots */}
-          <div className="flex justify-center h-8 gap-2 mt-6" aria-label="Testimonial navigation" aria-live="polite">
+          <div className="flex justify-center h-8 gap-2.5 mt-6" aria-label="Testimonial navigation" aria-live="polite">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveTestimonial(index)}
                 className={`dot w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   index === activeTestimonial 
-                    ? 'bg-blue-600 scale-125 shadow-md' 
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    ? 'bg-blue-400 scale-125 shadow-[0_0_10px_rgba(96,165,250,0.5)]' 
+                    : 'bg-slate-700 hover:bg-slate-600'
                 }`}
                 aria-label={`View testimonial ${index + 1}`}
                 aria-pressed={index === activeTestimonial}
@@ -266,17 +222,17 @@ export default function SocialProof() {
         <div className={`text-center mb-8 transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <button 
             onClick={toggleShowAllTestimonials}
-            className="inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors group px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="inline-flex items-center text-slate-400 font-semibold hover:text-white transition-colors group px-4 py-2 rounded-xl border border-white/[0.05] bg-white/[0.02] hover:bg-white/[0.06] focus:outline-none"
             aria-expanded={showAllTestimonials}
             aria-controls="all-testimonials-list"
           >
             {showAllTestimonials ? 'Hide all testimonials' : 'View all testimonials'}
             <svg 
-              className={`w-5 h-5 ml-2 transition-transform ${showAllTestimonials ? 'rotate-180' : ''}`} 
+              className={`w-4 h-4 ml-2 transition-transform duration-300 ${showAllTestimonials ? 'rotate-180' : ''}`} 
               viewBox="0 0 24 24" 
               fill="none" 
               stroke="currentColor" 
-              strokeWidth="2" 
+              strokeWidth="2.5" 
               strokeLinecap="round" 
               strokeLinejoin="round"
             >
@@ -285,7 +241,7 @@ export default function SocialProof() {
           </button>
         </div>
 
-        {/* All testimonials scrollable list */}
+        {/* All testimonials drawer scrollable list */}
         {showAllTestimonials && (
           <div 
             ref={testimonialsRef}
@@ -297,32 +253,30 @@ export default function SocialProof() {
               <div className="w-full max-w-4xl relative">
                 <div className="grid sm:grid-cols-2 gap-6 px-2">
                   {testimonials.map((testimonial, index) => (
-                    <div key={index} className="opacity-100 scale-100 z-10 testimonial-hover">
-                      <div className="relative bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg border border-blue-200 px-6 py-6 flex flex-col justify-center items-center min-h-[180px] overflow-hidden card-glass">
-                        {/* Gradient border/glow */}
-                        <div className="absolute inset-0 rounded-2xl pointer-events-none z-0" style={{boxShadow: '0 0 0 2px rgba(59,130,246,0.15), 0 4px 16px 0 rgba(31,38,135,0.10)'}} />
+                    <div key={index} className="opacity-100 scale-100 z-10 testimonial-hover rounded-2xl">
+                      <div className="relative bg-slate-900/35 border border-white/[0.05] backdrop-blur-lg rounded-2xl p-6 flex flex-col justify-center items-center min-h-[180px] overflow-hidden">
                         {/* Decorative quote icon */}
-                        <div className="absolute -top-2 left-4 text-blue-300 opacity-30 z-10">
-                          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                        <div className="absolute -top-3 left-4 text-blue-500/10 opacity-30 z-0 pointer-events-none">
+                          <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M7.17 21v-7.39c0-5.7 3.73-9.57 8.98-10.61l.99 2.15c-2.43.92-3.99 3.64-3.99 5.85h4v10H7.17zm-7.17 0v-7.39c0-5.7 3.75-9.57 9-10.61l1 2.15c-2.43.92-4 3.64-4 5.85h4v10H0z" />
                           </svg>
                         </div>
                         {/* Testimonial content */}
-                        <div className="relative pt-4 w-full h-full flex flex-col items-center z-10">
-                          <p className="text-gray-900 italic mb-4 text-base font-medium text-center px-2">
-                            {testimonial.quote}
+                        <div className="relative pt-3 w-full h-full flex flex-col items-center z-10 text-center">
+                          <p className="text-slate-200 italic mb-6 text-sm sm:text-base font-medium px-2 leading-relaxed">
+                            &ldquo;{testimonial.quote}&rdquo;
                           </p>
-                          <div className="flex items-center mt-2">
+                          <div className="flex items-center mt-auto">
                             <span className="avatar-gradient animate-avatar-float mr-3">
                               <span className="avatar-inner w-10 h-10">
-                                <span className="text-blue-700 font-bold text-lg">
+                                <span className="text-blue-400 font-extrabold text-lg">
                                   {testimonial.name.charAt(0)}
                                 </span>
                               </span>
                             </span>
                             <div className="text-left">
-                              <p className="font-semibold text-gray-900 text-sm leading-tight mb-1">{testimonial.name}</p>
-                              <p className="text-xs text-gray-500">{testimonial.title}</p>
+                              <p className="font-bold text-white text-sm leading-tight font-heading mb-0.5">{testimonial.name}</p>
+                              <p className="text-[10px] text-slate-400 font-medium">{testimonial.title}</p>
                             </div>
                           </div>
                         </div>
@@ -335,19 +289,19 @@ export default function SocialProof() {
           </div>
         )}
 
-        {/* Call to action */}
-        <div className={`text-center mt-8 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}> 
+        {/* Bottom Call to Action */}
+        <div className={`text-center mt-12 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}> 
           <a 
             href="mailto:clyvos@zohomail.in?subject=Discovery%20Call%20Request" 
-            className="cta-animated inline-flex items-center text-lg text-blue-600 font-bold hover:text-pink-600 transition-colors group px-6 py-3 rounded-full bg-white/70 shadow-md backdrop-blur-md border border-blue-100 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="inline-flex items-center gap-2 text-sm sm:text-base text-blue-400 font-bold hover:text-pink-400 px-6 py-3 rounded-full bg-slate-900/35 border border-white/[0.06] hover:border-indigo-500/20 shadow-md backdrop-blur-md hover:shadow-2xl transition-all duration-300"
           >
             Book a free discovery call
             <svg 
-              className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" 
+              className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" 
               viewBox="0 0 24 24" 
               fill="none" 
               stroke="currentColor" 
-              strokeWidth="2" 
+              strokeWidth="2.5" 
               strokeLinecap="round" 
               strokeLinejoin="round"
             >

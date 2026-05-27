@@ -9,7 +9,7 @@ export default function Pricing() {
       description: "Best for simple websites or landing pages.",
       features: ["1-3 Page Design", "Basic Contact Form", "Responsive Layout"],
       cta: "Get Started",
-      icon: <FaBolt className="text-yellow-500 text-3xl" />,
+      icon: <FaBolt className="text-amber-400 text-2xl" />,
     },
     {
       name: "Growth",
@@ -23,7 +23,7 @@ export default function Pricing() {
       ],
       cta: "Start My Project",
       popular: true,
-      icon: <FaChartBar className="text-purple-600 text-3xl" />,
+      icon: <FaChartBar className="text-purple-400 text-2xl" />,
     },
     {
       name: "Custom",
@@ -36,138 +36,106 @@ export default function Pricing() {
         "Dedicated Dev Team",
       ],
       cta: "Request a Quote",
-      icon: <FaHandshake className="text-indigo-600 text-3xl" />,
+      icon: <FaHandshake className="text-indigo-400 text-2xl" />,
     },
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-purple-100 relative overflow-hidden">
-      {/* Animated background shapes for depth */}
+    <section className="py-24 bg-[#030712] relative overflow-hidden">
+      {/* Premium ambient glows */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="w-72 h-72 bg-white/40 rounded-full blur-2xl absolute -top-20 -left-20 animate-float" />
-        <div className="w-72 h-72 bg-blue-200/30 rounded-full blur-xl absolute -bottom-20 -right-20 animate-float-reverse" />
-        <div className="w-40 h-40 bg-pink-200/30 rounded-full blur-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-float-slow2" />
+        <div className="w-80 h-80 rounded-full blur-[140px] absolute -top-20 -left-20 glow-spot-blue opacity-30 animate-pulse-slow" />
+        <div className="w-96 h-96 rounded-full blur-[140px] absolute -bottom-20 -right-20 glow-spot-purple opacity-20 animate-pulse-slow" style={{ animationDelay: "2s" }} />
       </div>
-      <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-2 bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x drop-shadow-lg">
-          💰 Simple, Transparent Pricing
-        </h2>
-        <p className="text-gray-700 mb-8 text-lg font-medium">
-          No hidden fees. Custom plans available. Money-back guarantee if we don&apos;t deliver.
-        </p>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-10">
+      <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+        <div className="mb-16">
+          <p className="inline-flex items-center rounded-full bg-purple-500/10 border border-purple-500/30 px-3.5 py-1 text-xs font-semibold text-purple-300 mb-4 tracking-wide uppercase">
+            Pricing Plans
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-black mb-4 bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent font-heading tracking-tight drop-shadow-md">
+            Simple, Transparent Pricing
+          </h2>
+          <p className="text-slate-400 max-w-xl mx-auto font-medium text-base sm:text-lg leading-relaxed">
+            No hidden fees. Custom plans tailored to your scope. 100% money-back guarantee if we don&apos;t deliver.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 items-stretch mt-10">
           {plans.map((plan, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: plan.popular ? 1.04 : 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ delay: idx * 0.12, duration: 0.6, type: "spring" }}
-              whileHover={{ scale: 1.06, boxShadow: "0 8px 32px rgba(60, 72, 200, 0.15)" }}
-              className={`relative border rounded-3xl p-8 shadow-xl bg-white/80 backdrop-blur-lg transition-all duration-300 cursor-pointer overflow-visible group ${
+              whileInView={{ opacity: 1, y: 0, scale: plan.popular ? 1.03 : 1 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ delay: idx * 0.1, duration: 0.6, type: "spring", stiffness: 100 }}
+              whileHover={{ scale: plan.popular ? 1.05 : 1.03 }}
+              className={`relative rounded-3xl p-8 shadow-xl backdrop-blur-lg transition-all duration-300 cursor-pointer overflow-visible group flex flex-col justify-between ${
                 plan.popular
-                  ? "border-blue-500 z-20 ring-2 ring-blue-100 scale-104"
-                  : "border-gray-200 z-10"
+                  ? "border border-indigo-500/40 bg-slate-900/60 shadow-[0_15px_40px_-15px_rgba(99,102,241,0.25)] z-20 scale-[1.03]"
+                  : "border border-white/[0.05] bg-slate-900/35 z-10"
               }`}
-              style={{ minHeight: 370 }}
             >
-              {/* Plan Icon */}
-              <div className="flex justify-center mb-4">
-                <div className="p-4 rounded-full bg-gradient-to-tr from-blue-100 via-white to-indigo-100 shadow group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                  {plan.icon}
-                </div>
-              </div>
+              {/* Popular glow ring */}
               {plan.popular && (
-                <motion.div
-                  initial={{ scale: 0, y: -20 }}
-                  animate={{ scale: 1, y: 0 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="absolute -top-4 left-0 right-0 mx-auto w-28 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-1 px-2 rounded-full text-xs font-semibold shadow-md drop-shadow-md"
-                >
-                  Most Popular
-                </motion.div>
+                <div className="absolute inset-0 rounded-3xl bg-indigo-500/[0.02] border border-indigo-500/20 blur-sm pointer-events-none z-0" />
               )}
-              <h3 className="text-xl font-bold mb-1 text-gray-900 drop-shadow-sm">{plan.name}</h3>
-              <p className="text-gray-600 mb-2 h-12 text-base">{plan.description}</p>
-              <p className="text-3xl font-extrabold text-transparent bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text mb-6">
-                {plan.price}
-              </p>
-              <ul className="text-left space-y-2 mb-6 min-h-24">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start text-gray-700 text-base">
-                    <span className="text-green-500 mr-2 font-bold text-lg animate-bounce-slow">✓</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <motion.a
-                href="mailto:clyvos@zohomail.in?subject=Discovery%20Call%20Request"
-                whileHover={{ scale: 1.05, background: plan.popular ? "linear-gradient(90deg,#2563eb,#a21caf)" : "#f3f4f6", color: plan.popular ? "#fff" : "#1e293b" }}
-                className={`w-full block px-4 py-3 rounded-xl font-semibold transition-all duration-200 shadow focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 text-base mt-2 animate-cta-glow relative overflow-hidden group ${
-                  plan.popular
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
-                    : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-                }`}
-              >
-                <span className="relative z-10">{plan.cta}</span>
-                <span className="absolute left-0 top-0 w-full h-full bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-              </motion.a>
+
+              <div className="relative z-10">
+                {plan.popular && (
+                  <motion.div
+                    initial={{ scale: 0, y: -20 }}
+                    animate={{ scale: 1, y: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute -top-[52px] left-0 right-0 mx-auto w-fit bg-gradient-to-r from-blue-500 to-purple-500 text-white py-1 px-3.5 rounded-full text-xs font-bold shadow-md tracking-wider uppercase"
+                  >
+                    Most Popular
+                  </motion.div>
+                )}
+
+                {/* Plan Icon */}
+                <div className="flex justify-center mb-6">
+                  <div className="p-4 rounded-2xl bg-slate-950/60 border border-white/[0.08] shadow-inner group-hover:scale-110 group-hover:border-indigo-500/30 transition-all duration-300">
+                    {plan.icon}
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-bold mb-1.5 text-white font-heading tracking-wide">{plan.name}</h3>
+                <p className="text-slate-400 mb-6 text-sm font-medium leading-relaxed min-h-10">{plan.description}</p>
+                <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 mb-6 font-heading tracking-tight">
+                  {plan.price}
+                </p>
+
+                <ul className="text-left space-y-3 mb-8 min-h-32">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-start text-slate-300 text-sm sm:text-base font-medium">
+                      <span className="text-emerald-400 mr-2.5 font-extrabold text-lg leading-none">✓</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="relative z-10 mt-auto">
+                <a
+                  href="mailto:clyvos@zohomail.in?subject=Discovery%20Call%20Request"
+                  className={`w-full block px-4 py-3.5 rounded-2xl font-bold text-center transition-all duration-200 mt-2 text-sm sm:text-base ${
+                    plan.popular
+                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-[0_4px_16px_rgba(99,102,241,0.3)] hover:shadow-[0_4px_24px_rgba(99,102,241,0.45)] hover:scale-[1.01]"
+                      : "bg-white/[0.03] border border-white/10 hover:bg-white/[0.08] hover:border-white/20 text-white"
+                  }`}
+                >
+                  {plan.cta}
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        <p className="text-xs text-gray-500 mt-8">
+        <p className="text-xs text-slate-500 mt-10 font-medium">
           💸 100% refund if we don&apos;t meet project scope. Let&apos;s build with confidence.
         </p>
       </div>
-      {/* Subtle animated background gradient and keyframes */}
-      <style jsx>{`
-        .animate-gradient-x {
-          background-size: 200% 200%;
-          animation: gradient-x 4s ease-in-out infinite;
-        }
-        @keyframes gradient-x {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-bounce-slow {
-          animation: bounce 2.5s infinite;
-        }
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
-        .animate-float {
-          animation: float 8s ease-in-out infinite;
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-18px); }
-        }
-        .animate-float-reverse {
-          animation: float-reverse 10s ease-in-out infinite;
-        }
-        @keyframes float-reverse {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(18px); }
-        }
-        .animate-float-slow2 {
-          animation: float-slow2 14s ease-in-out infinite;
-        }
-        @keyframes float-slow2 {
-          0%, 100% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(-30px) scale(1.08); }
-        }
-        .animate-cta-glow {
-          animation: cta-glow 3.5s infinite;
-        }
-        @keyframes cta-glow {
-          0%, 100% { box-shadow: 0 0 0 0 #3b82f6aa; }
-          50% { box-shadow: 0 0 16px 4px #a21cafcc; }
-        }
-      `}</style>
     </section>
   );
 }

@@ -25,21 +25,15 @@ export default function SolutionSection() {
   ];
 
   return (
-    <div className="relative overflow-x-hidden bg-gradient-to-br from-blue-50 via-white to-slate-100">
-      {/* Animated floating blobs */}
-      <motion.div
-        className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 opacity-30 rounded-full blur-3xl z-0 animate-pulse"
-        animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-1/2 right-0 w-80 h-80 bg-gradient-to-tr from-blue-200 via-cyan-300 to-blue-400 opacity-20 rounded-full blur-2xl z-0 animate-pulse"
-        animate={{ y: [0, -40, 0], x: [0, -30, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
+    <div className="relative overflow-hidden bg-[#030712] py-20">
+      {/* Decorative background ambient lighting */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-10 left-10 w-[400px] h-[400px] rounded-full blur-[120px] glow-spot-blue opacity-40 animate-pulse-slow" />
+        <div className="absolute bottom-10 right-10 w-[400px] h-[400px] rounded-full blur-[120px] glow-spot-purple opacity-30 animate-pulse-slow" />
+      </div>
 
       {/* Problem/Solution Section */}
-      <section className="py-28 relative z-10" ref={ref}>
+      <section className="py-12 relative z-10" ref={ref}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -47,26 +41,26 @@ export default function SolutionSection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4 drop-shadow-lg">
+            <h2 className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent mb-4 font-heading tracking-tight drop-shadow-md">
               The Digital Transformation Challenge
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto font-medium">
-              Businesses today face unique challenges in their digital journey
+            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed">
+              Businesses today face unique hurdles in their digital journey. We turn these roadblocks into launchpads.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Problem Column */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.9, type: "spring", bounce: 0.2 }}
-              className="bg-white/80 backdrop-blur-md p-10 rounded-3xl border border-slate-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 group relative overflow-hidden"
-              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.9, type: "spring", bounce: 0.1 }}
+              className="bg-red-500/[0.02] border border-red-500/10 backdrop-blur-lg p-8 sm:p-10 rounded-3xl shadow-[0_10px_40px_-15px_rgba(239,68,68,0.1)] hover:border-red-500/25 hover:bg-red-500/[0.04] transition-all duration-500 group relative overflow-hidden"
+              whileHover={{ scale: 1.015 }}
             >
               <div className="flex items-center gap-4 mb-6">
                 <motion.div
-                  className="bg-red-100 p-3 rounded-full shadow-md"
+                  className="bg-red-500/10 border border-red-500/20 p-3 rounded-2xl shadow-md text-red-400"
                   whileHover={{ rotate: 10, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -77,17 +71,17 @@ export default function SolutionSection() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="w-6 h-6 text-red-500"
+                    className="w-6 h-6"
                   >
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="8" x2="12" y2="12"></line>
                     <line x1="12" y1="16" x2="12.01" y2="16"></line>
                   </svg>
                 </motion.div>
-                <h3 className="text-2xl font-bold text-slate-900">The Problems You Face</h3>
+                <h3 className="text-2xl font-bold text-white font-heading tracking-wide">The Problems You Face</h3>
               </div>
               <motion.ul
                 className="space-y-4"
@@ -97,7 +91,7 @@ export default function SolutionSection() {
                   hidden: {},
                   visible: {
                     transition: {
-                      staggerChildren: 0.13,
+                      staggerChildren: 0.08,
                     },
                   },
                 }}
@@ -105,12 +99,12 @@ export default function SolutionSection() {
                 {problems.map((problem, index) => (
                   <motion.li
                     key={index}
-                    className="flex items-start gap-3 bg-red-50/60 rounded-lg px-3 py-2 hover:bg-red-100/80 transition-colors duration-200 cursor-pointer shadow-sm"
+                    className="flex items-start gap-3 bg-red-950/15 border border-red-900/20 rounded-xl px-4 py-3 hover:bg-red-950/30 hover:border-red-900/35 transition-all duration-200 cursor-pointer shadow-sm text-slate-300"
                     variants={{
                       hidden: { opacity: 0, x: -20 },
                       visible: { opacity: 1, x: 0 },
                     }}
-                    whileHover={{ scale: 1.04, x: 5 }}
+                    whileHover={{ scale: 1.025, x: 4 }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -119,15 +113,15 @@ export default function SolutionSection() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="2"
+                      strokeWidth="2.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0 animate-pulse group-hover:animate-none"
+                      className="w-5 h-5 text-red-500/80 mt-0.5 flex-shrink-0"
                     >
                       <circle cx="12" cy="12" r="10"></circle>
                       <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
                     </svg>
-                    <span className="text-slate-700 font-medium">{problem}</span>
+                    <span className="font-medium text-slate-300 text-sm sm:text-base">{problem}</span>
                   </motion.li>
                 ))}
               </motion.ul>
@@ -137,14 +131,13 @@ export default function SolutionSection() {
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.9, type: "spring", bounce: 0.2, delay: 0.2 }}
-              className="bg-white/80 backdrop-blur-md p-10 rounded-3xl border border-blue-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 group relative overflow-hidden w-full"
-              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.9, type: "spring", bounce: 0.1, delay: 0.1 }}
+              className="bg-blue-500/[0.02] border border-blue-500/10 backdrop-blur-lg p-8 sm:p-10 rounded-3xl shadow-[0_10px_40px_-15px_rgba(59,130,246,0.1)] hover:border-blue-500/25 hover:bg-blue-500/[0.04] transition-all duration-500 group relative overflow-hidden w-full"
+              whileHover={{ scale: 1.015 }}
             >
-              <div className="absolute -right-10 -top-10 w-48 h-48 sm:w-64 sm:h-64 bg-blue-100 rounded-full blur-3xl opacity-30 pointer-events-none max-w-full animate-pulse"></div>
               <div className="flex items-center gap-4 mb-6">
                 <motion.div
-                  className="bg-blue-100 p-3 rounded-full shadow-md"
+                  className="bg-blue-500/10 border border-blue-500/20 p-3 rounded-2xl shadow-md text-blue-400"
                   whileHover={{ rotate: -10, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -155,16 +148,16 @@ export default function SolutionSection() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="w-6 h-6 text-blue-500"
+                    className="w-6 h-6"
                   >
                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
                   </svg>
                 </motion.div>
-                <h3 className="text-2xl font-bold text-slate-900">The Clyvos Solution</h3>
+                <h3 className="text-2xl font-bold text-white font-heading tracking-wide">The Clyvos Solution</h3>
               </div>
               <motion.ul
                 className="space-y-4"
@@ -174,7 +167,7 @@ export default function SolutionSection() {
                   hidden: {},
                   visible: {
                     transition: {
-                      staggerChildren: 0.13,
+                      staggerChildren: 0.08,
                     },
                   },
                 }}
@@ -182,12 +175,12 @@ export default function SolutionSection() {
                 {solutions.map((solution, index) => (
                   <motion.li
                     key={index}
-                    className="flex items-start gap-3 bg-blue-50/60 rounded-lg px-3 py-2 hover:bg-blue-100/80 transition-colors duration-200 cursor-pointer shadow-sm"
+                    className="flex items-start gap-3 bg-blue-950/15 border border-blue-900/20 rounded-xl px-4 py-3 hover:bg-blue-950/30 hover:border-blue-900/35 transition-all duration-200 cursor-pointer shadow-sm text-slate-300"
                     variants={{
                       hidden: { opacity: 0, x: 20 },
                       visible: { opacity: 1, x: 0 },
                     }}
-                    whileHover={{ scale: 1.04, x: 5 }}
+                    whileHover={{ scale: 1.025, x: 4 }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -196,28 +189,28 @@ export default function SolutionSection() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="2"
+                      strokeWidth="2.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0 animate-bounce group-hover:animate-none"
+                      className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0"
                     >
                       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                       <polyline points="22 4 12 14.01 9 11.01"></polyline>
                     </svg>
-                    <span className="text-slate-700 font-medium">{solution}</span>
+                    <span className="font-medium text-slate-300 text-sm sm:text-base">{solution}</span>
                   </motion.li>
                 ))}
               </motion.ul>
 
               <motion.div
-                className="mt-8 bg-gradient-to-r from-blue-100 via-white to-blue-50 p-6 rounded-xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="mt-8 bg-gradient-to-r from-blue-950/40 via-indigo-950/10 to-purple-950/40 p-6 rounded-2xl border border-blue-500/15 shadow-sm hover:border-blue-500/25 transition-all duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.5, type: "spring" }}
+                transition={{ duration: 0.7, delay: 0.4, type: "spring" }}
               >
-                <h4 className="font-bold text-slate-900 mb-3 text-lg">The Result?</h4>
-                <p className="text-slate-700 text-base">
-                  Businesses using <span className="font-bold text-blue-600">Clyvos</span> solutions see an average of <span className="font-bold text-blue-600">3.5x ROI</span> within the first year, with <span className="font-bold text-blue-600">40% faster</span> operational processes and <span className="font-bold text-blue-600">75% higher</span> customer satisfaction scores.
+                <h4 className="font-extrabold text-white mb-2 text-lg font-heading tracking-wide">The Result?</h4>
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Businesses using <span className="font-bold text-blue-400">Clyvos</span> solutions see an average of <span className="font-bold text-indigo-400">3.5x ROI</span> within the first year, with <span className="font-bold text-indigo-400">40% faster</span> operational processes and <span className="font-bold text-indigo-400">75% higher</span> customer satisfaction scores.
                 </p>
               </motion.div>
             </motion.div>

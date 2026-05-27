@@ -189,7 +189,7 @@ export default function SocialProof() {
                 </svg>
               ))}
             </div>
-            <span className="text-base font-semibold text-blue-700">4.9/5 from our clients</span>
+            <span className="text-base font-semibold text-blue-700">5/5 from our clients</span>
           </div>
         </div>
 

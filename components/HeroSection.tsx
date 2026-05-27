@@ -75,7 +75,7 @@ export default function Hero() {
             {/* Small badge */}
             <div className={`mb-6 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}>
               <span className="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full shadow animate-pulse">
-                Trusted by 5+ businesses so far
+                Trusted by 15+ businesses so far
               </span>
             </div>
             {/* Main heading */}
@@ -171,11 +171,11 @@ export default function Hero() {
             </div>
             <div className="mt-6 grid grid-cols-3 gap-3 max-w-lg">
               <div className="rounded-xl bg-white/70 border border-blue-100 px-3 py-2 text-center shadow-sm">
-                <p className="text-xl font-extrabold text-blue-700">5+</p>
+                <p className="text-xl font-extrabold text-blue-700">15+</p>
                 <p className="text-xs text-gray-600">Businesses served so far</p>
               </div>
               <div className="rounded-xl bg-white/70 border border-blue-100 px-3 py-2 text-center shadow-sm">
-                <p className="text-xl font-extrabold text-blue-700">4.9/5</p>
+                <p className="text-xl font-extrabold text-blue-700">5/5</p>
                 <p className="text-xs text-gray-600">Client rating</p>
               </div>
               <div className="rounded-xl bg-white/70 border border-blue-100 px-3 py-2 text-center shadow-sm">

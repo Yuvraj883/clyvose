@@ -54,8 +54,17 @@ export default function ProjectsDelivered() {
           {deliveredProjects.map((project) => (
             <article
               key={project.name}
-              className="rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 p-6 bg-gradient-to-br from-white to-blue-50/40"
+              className="relative rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 p-6 bg-gradient-to-br from-white to-blue-50/40"
             >
+              <div className="absolute -top-4 -left-4 z-10 w-12 h-12 rounded-full border-2 border-white bg-white shadow-lg p-1.5">
+                <Image
+                  src="/logo.png"
+                  alt="Clyvos logo"
+                  width={48}
+                  height={48}
+                  className="w-full h-full rounded-full object-cover"
+                />
+              </div>
               <div className="mb-4 overflow-hidden rounded-xl border border-blue-100 bg-white">
                 <Image
                   src={project.image}

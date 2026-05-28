@@ -128,7 +128,7 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Social Links */}
+            {/* Social Links commented out for now
             <div className="flex gap-5 mt-8 items-center" aria-label="Social media links">
               <a
                 href="https://www.linkedin.com/company/clyvos/"
@@ -169,10 +169,11 @@ export default function Hero() {
               >
                 <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="32" height="32" rx="6" fill="#fff"/>
-                  <path d="M10.5 10.5h3.1l3.1 4.1 3.1-4.1h3.1l-4.6 6 4.6 6h-3.1l-3.1-4.1-3.1 4.1h-3.1l4.6-6-4.6-6z" fill="#000"/>
+                  <path d="M10.5 10.5h3.1l3.1 4.1 3.1-4.1h3.1l-4.6 6 4.6 6h-3.1l-3.1-4.1-3.1 4.1h-3.1l-4.6-6-4.6-6z" fill="#000"/>
                 </svg>
               </a>
             </div>
+            */}
 
             {/* Micro Stats Grid */}
             <div className="mt-8 grid grid-cols-3 gap-3 max-w-lg">

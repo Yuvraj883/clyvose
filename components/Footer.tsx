@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -70,6 +70,7 @@ export default function Footer() {
               <FaEnvelope className="text-indigo-400" />
               <a href="mailto:clyvos@zohomail.in">clyvos@zohomail.in</a>
             </div>
+            {/* Social links commented out for now
             <div className="flex gap-4 pt-2">
               <a
                 href="https://www.linkedin.com/company/clyvos/"
@@ -90,6 +91,7 @@ export default function Footer() {
                 <FaInstagram className="text-lg" />
               </a>
             </div>
+            */}
           </div>
         </div>
 
